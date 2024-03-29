@@ -1,6 +1,6 @@
 <script setup>
 
-import CodeComponent from "@/components/CodeComponent.vue";
+import CodeComponent from "@/components/CodeComponent/CodeComponent.vue";
 </script>
 
 <template>
@@ -14,6 +14,7 @@ import CodeComponent from "@/components/CodeComponent.vue";
 .body {
   height: @height;
   width: 100%;
-  padding: 20px;
+  margin: auto;
+  display: flex;
 }
 </style>

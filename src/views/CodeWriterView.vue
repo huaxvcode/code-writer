@@ -15,7 +15,7 @@ import BodyComponent from "@/components/BodyComponent.vue";
 @width: 100%;
 @height: 100%;
 .code-writer {
-  background-color: #24292E;
+  background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
   width: @width;
   height: @height;
