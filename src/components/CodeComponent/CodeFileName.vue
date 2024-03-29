@@ -1,10 +1,16 @@
 <script setup>
 import {ref, watch} from "vue";
+import ShowName from "@/components/CodeComponent/ShowName.vue";
+import SplitComponent from "@/components/SplitComponent.vue";
+import { langMode } from "@/assets/static/LangMode";
 // eslint-disable-next-line no-undef
 let fileName = defineModel('fileName');
 let fontColor = ref('rgb(67,105,182)');
 // eslint-disable-next-line no-undef
 let onFocus = defineModel('onFocus');
+let lang = ref();
+// eslint-disable-next-line no-undef
+let lm = defineModel('langMode');
 onFocus.value = false;
 watch(
     onFocus,
@@ -14,17 +20,52 @@ watch(
     },
     { immediate: true }
 )
+
+const getLangMode = (name) => {
+  if (!name) return null;
+  let ans = '';
+  let reverse = (s) => {
+    if (!s) return null;
+    let ans = '';
+    for (let i = s.length - 1; i > -1; i --) {
+      ans += s.charAt(i);
+    }
+    return ans;
+  }
+  for (let i = name.length - 1; i > -1; i --) {
+    if (name[i] === '.') { return reverse(ans); }
+    ans += name[i];
+  }
+  return null;
+};
+watch(fileName, () => {
+  let ans = getLangMode(fileName.value);
+  if (ans && langMode[ans]) {
+    lang.value = ans;
+    lm.value = ans;
+  }
+  else {
+    lang.value = null;
+    lm.value = null;
+  }
+})
 </script>
 
 <template>
-  <div class="code-file-name">
-    <el-input
-        :maxlength="25"
-        v-model="fileName"
-        clearable
-        show-word-limit
-        placeholder="please input file name..."
-    />
+  <div>
+    <div class="code-file-name-show-button">
+      <show-name>{{ lang }}</show-name>
+    </div>
+    <split-component :size="'5px'"/>
+    <div class="code-file-name">
+      <el-input
+          :maxlength="25"
+          v-model="fileName"
+          clearable
+          show-word-limit
+          placeholder="File name here ..."
+      />
+  </div>
   </div>
 </template>
 
@@ -49,6 +90,7 @@ watch(
 }
 /deep/ .el-input__inner {
   font-family: monospace;
+  font-weight: bold;
 }
 /deep/ .el-input__count-inner {
   --el-fill-color-blank: rgb( 30, 31, 34);

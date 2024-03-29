@@ -19,11 +19,8 @@
 <script setup>
 import {onMounted, reactive, ref, shallowRef, watch, watchEffect} from 'vue'
 import { Codemirror } from 'vue-codemirror'
-import { cpp } from '@codemirror/lang-cpp'
-import { python } from '@codemirror/lang-python'
-import { java } from '@codemirror/lang-java'
 import { oneDark } from '@codemirror/theme-one-dark'
-
+import { langMode } from "@/assets/static/LangMode";
 // eslint-disable-next-line no-undef
 let props = defineProps(['lang', 'style']);
 const code = ref(``)
@@ -43,14 +40,16 @@ let style_ = reactive({
   fontSize: '24px'
 });
 watchEffect(() => {
-  if (props.lang === 'c') extensions[1] = cpp();
-  else if (props.lang === 'cpp') extensions[1] = cpp();
-  else if (props.lang === 'java') extensions[1] = java();
-  else if (props.lang === 'python') extensions[1] = python();
+  if (props.lang && langMode[props.lang]) {
+    while (extensions.length > 1) extensions.pop();
+    extensions.push(langMode[props.lang])
+  }
+  else while (extensions.length > 1) extensions.pop();
 })
 watchEffect(() => {
   if (props.style && Object.prototype.toString.call(props.style) === '[object Object]') {
     if (props.style.minHeight) style_.minHeight = props.style.minHeight;
+    if (props.style.maxHeight) style_.maxHeight = props.style.maxHeight;
   }
 })
 onMounted(() => {
