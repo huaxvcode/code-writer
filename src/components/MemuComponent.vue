@@ -1,69 +1,33 @@
 <script setup>
 // eslint-disable-next-line no-undef
-let fileName = defineModel();
-fileName.value = 'Untitled.???'
+let fileName = defineModel('fileName');
+fileName.value = 'Mainsdfasdfasdfasdf.py'
 </script>
 
 <template>
-  <div class="menu">
-      <div class="menu-run">
-        <div class="menu-name">{{ fileName }}</div>
-          <div class="menu-icon">
-            <svg t="1711616921685" viewBox="0 0 1024 1024" version="1.1"
-                 xmlns="http://www.w3.org/2000/svg"
-                 p-id="4436">
-              <path
-                  d="M170.666667 128l2.133333 768c0 34.133333 36.266667 53.333333 64 34.133333l597.333333-384c25.6-17.066667 25.6-53.333333 0-70.4L234.666667 91.733333C206.933333 74.666667 170.666667 93.866667 170.666667 128z"
-                  fill="#1afa29" p-id="4437"></path>
-            </svg>
-          </div>
-      </div>
+  <div class="menu-component">
+    <div class="menu-file-name">{{ fileName }}</div>
+    <div class="menu-icon">
+      <el-button
+        color="unset"
+      >
+        <svg t="1711796551861" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7939" width="20px"><path d="M264.3 141.6l275.4 179.3 284 184.8c1 0.6 3.6 2.4 3.6 6.7 0 4.3-2.6 6.1-3.6 6.7L539.8 704 264.3 883.3c-0.2-1-0.3-2.1-0.3-3.5V145.1c0-1.3 0.2-2.5 0.3-3.5M262 66.2c-36.5 0-70 32.9-70 78.9v734.6c0 46 33.5 78.9 70 78.9 11.6 0 23.6-3.3 34.8-10.7L579 764.2l284-184.8c48.5-31.6 48.5-102.5 0-134.1L579 260.5 296.9 76.9c-11.3-7.3-23.2-10.7-34.9-10.7z" fill="#5FAD65" p-id="7940"></path></svg>
+      </el-button>
+    </div>
   </div>
 </template>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-@height: 50px;
-.menu {
-  width: 100%;
-  height: @height;
-  display: flex;
-  color: #FFFFFF;
-  font-weight: bold;
-}
-.menu-run {
-  display: flex;
-  margin: auto;
-  height: @height;
-  padding: 0 10px 0 20px;
-  border-radius: 5px;
-  background-color: #0D1117;
-  justify-content: center;
-  align-items: center;
-  -moz-user-select:none; /* Firefox私有属性 */
-  -webkit-user-select:none; /* WebKit内核私有属性 */
-  -ms-user-select:none; /* IE私有属性(IE10及以后) */
-  -khtml-user-select:none; /* KHTML内核私有属性 */
-  -o-user-select:none; /* Opera私有属性 */
-  user-select:none; /* CSS3属性 */
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  &:active {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-.menu-name {
+.menu-component {
   display: inline-block;
-  max-width: 500px;
-  height: @height;
-  overflow: hidden;
-  line-height: @height;
 }
-
-.menu-icon {
-  width: (@height / 2);
-  height: (@height / 2);
-  padding-left: 5px;
+.menu-file-name {
+  display: inline-block;
+}
+.el-button {
+  height: 30px;
+  width: 30px;
+  border: 0;
 }
 </style>

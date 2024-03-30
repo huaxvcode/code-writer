@@ -6,7 +6,7 @@ import BodyComponent from "@/components/BodyComponent.vue";
 
 <template>
 <div class="code-writer">
-  <memu-component/>
+  <div class="code-writer-menu"><memu-component/></div>
   <body-component/>
 </div>
 </template>
@@ -19,5 +19,10 @@ import BodyComponent from "@/components/BodyComponent.vue";
   position: absolute;
   width: @width;
   height: @height;
+}
+.code-writer-menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>

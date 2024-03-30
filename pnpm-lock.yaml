@@ -50,6 +50,9 @@ dependencies:
   '@codemirror/theme-one-dark':
     specifier: ^6.1.2
     version: 6.1.2
+  '@element-plus/icons-vue':
+    specifier: ^2.3.1
+    version: 2.3.1(vue@3.4.21)
   bootstrap:
     specifier: ^5.3.3
     version: 5.3.3(@popperjs/core@2.11.8)
