@@ -7,13 +7,13 @@ import BodyComponent from "@/components/BodyComponent.vue";
 <template>
 <div class="code-writer">
   <div class="code-writer-menu"><memu-component/></div>
-  <body-component/>
+  <div class="code-writer-body"><body-component/></div>
 </div>
 </template>
 
 <style scoped lang="less">
-@width: 100%;
-@height: 100%;
+@width: 100vw;
+@height: 100vh;
 .code-writer {
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
@@ -24,5 +24,11 @@ import BodyComponent from "@/components/BodyComponent.vue";
   width: 100%;
   display: flex;
   justify-content: center;
+}
+/deep/ .menu-component {
+  height: 55px;
+}
+/deep/ .body-component {
+  height: calc(100vh - 55px);
 }
 </style>

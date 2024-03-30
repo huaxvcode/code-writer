@@ -4,17 +4,15 @@ import CodeComponent from "@/components/CodeComponent/CodeComponent.vue";
 </script>
 
 <template>
-<div class="body">
+<div class="body-component">
   <code-component/>
 </div>
 </template>
 
 <style scoped lang="less">
-@height: calc(100% - 50px);
-.body {
-  height: @height;
+.body-component {
   width: 100%;
+  height: 100%;
   margin: auto;
-  display: flex;
 }
 </style>

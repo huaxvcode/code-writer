@@ -20,7 +20,6 @@ import SingleCodeComponent from "@/components/CodeComponent/SingleCodeComponent.
 .code-component {
   width: 100%;
   height: 100%;
-  //background-color: rgb(22, 27, 34);
   padding: 30px;
   overflow: auto;
 
