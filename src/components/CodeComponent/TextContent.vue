@@ -1,6 +1,6 @@
 <script setup>
 import CodeEditor from "@/components/CodeComponent/CodeEditor.vue";
-import {watchEffect} from "vue";
+import {ref, watchEffect} from "vue";
 import ShowName from "@/components/CodeComponent/ShowName.vue";
 import SplitComponent from "@/components/SplitComponent.vue";
 // eslint-disable-next-line no-undef
@@ -9,14 +9,15 @@ watchEffect(() => {
 })
 // eslint-disable-next-line no-undef
 let props = defineProps(['name']);
+let cnt = ref(0);
 </script>
 
 <template>
   <div class="text-content">
-    <show-name>{{ props.name }}</show-name>
+    <show-name @click="cnt ++">{{ props.name }}</show-name>
     <split-component :size="'5px'"/>
     <code-editor
-      :style="{minHeight: '200px', maxHeight: '400px'}"
+      :style="{minHeight: '208px', maxHeight: cnt % 2 === 0 ? '410px' : 'unset'}"
       v-model:code-string="code"
     />
   </div>

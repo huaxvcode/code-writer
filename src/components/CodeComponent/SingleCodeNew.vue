@@ -1,10 +1,9 @@
 <script setup>
 // eslint-disable-next-line no-undef
-let props = defineProps(['close']);
 </script>
 
 <template>
-  <div class="single-code-new" v-if="props.close">
+  <div class="single-code-new">
     <el-button
         class="single-code-new-button"
         color="#24292E"

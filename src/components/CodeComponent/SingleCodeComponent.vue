@@ -14,19 +14,19 @@ watchEffect(() => {
 let margin = '20px';
 let margin1 = '40px';
 // eslint-disable-next-line no-undef
-let close = defineModel('close');
-close.value = false;
-// eslint-disable-next-line no-undef
 let newOne = defineModel('newOne');
-newOne.value = false;
+// eslint-disable-next-line no-undef
+let singleCodeRemove = defineModel('singleCodeRemove');
+// eslint-disable-next-line no-undef
+let props = defineProps(['hashId']);
 </script>
 
 <template>
-  <div class="single-code-component-body" v-if="!close">
+  <div class="single-code-component-body">
     <div class="single-code-component">
       <div class="single-code-component-del-icon">
         <el-button
-            @click="() => { close = true; }"
+            @click="() => { singleCodeRemove = props.hashId; }"
             color="rgba(0, 0, 0, 0)"
             class="single-code-component-del-icon-button"
         >
@@ -50,8 +50,8 @@ newOne.value = false;
       <split-component :size="margin1"/>
       <text-content class="out-text-content" :name="'out.txt'"/>
       <split-component :size="margin1"/>
-      <div class="single-code-new-body">
-        <single-code-new :close="!close"/>
+      <div class="single-code-new-body" @click="() => { newOne = props.hashId; }">
+        <single-code-new/>
       </div>
     </div>
 
