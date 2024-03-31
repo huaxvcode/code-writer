@@ -37,5 +37,6 @@ import SingleCodeComponent from "@/components/CodeComponent/SingleCodeComponent.
     @margin-split: 50px;
     margin-top: @margin-split;
   }
+
 }
 </style>
