@@ -19,10 +19,20 @@ let newOne = defineModel('newOne');
 let singleCodeRemove = defineModel('singleCodeRemove');
 // eslint-disable-next-line no-undef
 let props = defineProps(['hashId']);
+let fileName = ref();
+// eslint-disable-next-line no-undef
+let emits = defineEmits(['fileName']);
+let emitFileName = () => {
+  // 前面部分
+  //    先执行完前面部分，
+  // 然后再向上抛出一个 @fileName 事件，并且该事件附带了 fileName.value 值
+  if (fileName.value) emits('fileName', fileName.value);
+  else emits('fileName', 'Untitled');
+}
 </script>
 
 <template>
-  <div class="single-code-component-body">
+  <div class="single-code-component-body" @click="emitFileName" @keyup="emitFileName">
     <div class="single-code-component">
       <div class="single-code-component-del-icon">
         <el-button
@@ -40,7 +50,7 @@ let props = defineProps(['hashId']);
           </template>
         </el-button>
       </div>
-      <code-file-name v-model:lang-mode="lang"/>
+      <code-file-name v-model:lang-mode="lang" v-model:file-name="fileName"/>
       <split-component :size="margin"/>
       <CodeEditor :lang="lang" v-model:code-string="code"/>
       <split-component :size="margin1"/>

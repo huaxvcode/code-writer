@@ -1,13 +1,14 @@
 <script setup>
-
 import MemuComponent from "@/components/MemuComponent.vue";
 import BodyComponent from "@/components/BodyComponent.vue";
+import {ref} from "vue";
+let focusFileName = ref();
 </script>
 
 <template>
 <div class="code-writer">
-  <div class="code-writer-menu"><memu-component/></div>
-  <div class="code-writer-body"><body-component/></div>
+  <div class="code-writer-menu"><memu-component v-model:file-name="focusFileName"/></div>
+  <div class="code-writer-body"><body-component v-model:focus-file-name="focusFileName"/></div>
 </div>
 </template>
 

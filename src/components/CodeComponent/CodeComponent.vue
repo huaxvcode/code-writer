@@ -64,6 +64,9 @@ watchEffect(() => {
   singleCodeNewOne.value = null;
 })
 
+// eslint-disable-next-line no-undef
+let focusFileName = defineModel('focusFileName');
+
 </script>
 
 <template>
@@ -79,6 +82,7 @@ watchEffect(() => {
           :hash-id="e"
           v-model:single-code-remove="singleCodeRemove"
           v-model:new-one="singleCodeNewOne"
+          @fileName="(fn) => { focusFileName = fn; }"
       />
       <div class="code-component-split"></div>
     </div>

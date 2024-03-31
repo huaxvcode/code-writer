@@ -1,7 +1,7 @@
 <script setup>
 // eslint-disable-next-line no-undef
 let fileName = defineModel('fileName');
-fileName.value = 'Main.py'
+fileName.value = 'None file focus'
 </script>
 
 <template>

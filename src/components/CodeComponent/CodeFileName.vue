@@ -8,7 +8,7 @@ let fileName = defineModel('fileName');
 let fontColor = ref('rgb(67,105,182)');
 // eslint-disable-next-line no-undef
 let onFocus = defineModel('onFocus');
-let lang = ref();
+let lang = ref('txt');
 // eslint-disable-next-line no-undef
 let lm = defineModel('langMode');
 onFocus.value = false;
@@ -45,7 +45,7 @@ watch(fileName, () => {
     lm.value = ans;
   }
   else {
-    lang.value = null;
+    lang.value = 'txt';
     lm.value = null;
   }
 })
